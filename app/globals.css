@@ -1,26 +1,142 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ═══════════════════════════════════════════════
+   THEME VARIABLES
+   Applied via data-theme on <html> element
+═══════════════════════════════════════════════ */
+
+:root,
+[data-theme="savanna"] {
+  --bg:                #F5F2EC;
+  --bg-alt:            #EDE9E0;
+  --text:              #111111;
+  --text-muted:        rgba(17, 17, 17, 0.55);
+  --accent:            #C89B3C;
+  --accent-hover:      #A67C2A;
+  --border:            rgba(17, 17, 17, 0.1);
+  --card:              #FFFFFF;
+  --nav-bg:            rgba(245, 242, 236, 0.92);
+  --footer-bg:         #111111;
+  --footer-text:       #F5F2EC;
+  --footer-muted:      rgba(245, 242, 236, 0.45);
+  --footer-border:     rgba(245, 242, 236, 0.1);
+  --btn-bg:            #111111;
+  --btn-text:          #F5F2EC;
+  --btn-bg-hover:      #C89B3C;
+  --btn-text-hover:    #111111;
+  --btn-outline-border:#111111;
+  --btn-outline-text:  #111111;
+  --btn-outline-bg-hover: #111111;
+  --btn-outline-text-hover: #F5F2EC;
+  --swatch-outline:    rgba(17,17,17,0.25);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+[data-theme="midnight"] {
+  --bg:                #0A0A0A;
+  --bg-alt:            #141414;
+  --text:              #F0ECE4;
+  --text-muted:        rgba(240, 236, 228, 0.5);
+  --accent:            #C89B3C;
+  --accent-hover:      #E8B54C;
+  --border:            rgba(240, 236, 228, 0.1);
+  --card:              #1A1A1A;
+  --nav-bg:            rgba(10, 10, 10, 0.92);
+  --footer-bg:         #000000;
+  --footer-text:       #F0ECE4;
+  --footer-muted:      rgba(240, 236, 228, 0.4);
+  --footer-border:     rgba(240, 236, 228, 0.08);
+  --btn-bg:            #C89B3C;
+  --btn-text:          #0A0A0A;
+  --btn-bg-hover:      #F0ECE4;
+  --btn-text-hover:    #0A0A0A;
+  --btn-outline-border:#F0ECE4;
+  --btn-outline-text:  #F0ECE4;
+  --btn-outline-bg-hover: #F0ECE4;
+  --btn-outline-text-hover: #0A0A0A;
+  --swatch-outline:    rgba(240,236,228,0.3);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+[data-theme="earth"] {
+  --bg:                #1C0F0A;
+  --bg-alt:            #2A1510;
+  --text:              #F0E6D3;
+  --text-muted:        rgba(240, 230, 211, 0.55);
+  --accent:            #E8A855;
+  --accent-hover:      #D4922A;
+  --border:            rgba(240, 230, 211, 0.12);
+  --card:              #2A1510;
+  --nav-bg:            rgba(28, 15, 10, 0.92);
+  --footer-bg:         #0A0603;
+  --footer-text:       #F0E6D3;
+  --footer-muted:      rgba(240, 230, 211, 0.4);
+  --footer-border:     rgba(240, 230, 211, 0.08);
+  --btn-bg:            #E8A855;
+  --btn-text:          #1C0F0A;
+  --btn-bg-hover:      #F0E6D3;
+  --btn-text-hover:    #1C0F0A;
+  --btn-outline-border:#F0E6D3;
+  --btn-outline-text:  #F0E6D3;
+  --btn-outline-bg-hover: #F0E6D3;
+  --btn-outline-text-hover: #1C0F0A;
+  --swatch-outline:    rgba(240,230,211,0.3);
+}
+
+[data-theme="dust"] {
+  --bg:                #E4DDD0;
+  --bg-alt:            #D8D0C0;
+  --text:              #1A1008;
+  --text-muted:        rgba(26, 16, 8, 0.5);
+  --accent:            #8B4513;
+  --accent-hover:      #6B3210;
+  --border:            rgba(26, 16, 8, 0.12);
+  --card:              #F2EDE3;
+  --nav-bg:            rgba(228, 221, 208, 0.92);
+  --footer-bg:         #1A1008;
+  --footer-text:       #E4DDD0;
+  --footer-muted:      rgba(228, 221, 208, 0.45);
+  --footer-border:     rgba(228, 221, 208, 0.1);
+  --btn-bg:            #1A1008;
+  --btn-text:          #E4DDD0;
+  --btn-bg-hover:      #8B4513;
+  --btn-text-hover:    #E4DDD0;
+  --btn-outline-border:#1A1008;
+  --btn-outline-text:  #1A1008;
+  --btn-outline-bg-hover: #1A1008;
+  --btn-outline-text-hover: #E4DDD0;
+  --swatch-outline:    rgba(26,16,8,0.25);
+}
+
+/* ═══════════════════════════════════════════════
+   GLOBAL BASE
+═══════════════════════════════════════════════ */
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-outfit, 'Outfit'), sans-serif;
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+/* Themed sections */
+section {
+  background-color: var(--bg);
+  transition: background-color 0.35s ease;
+}
+
+/* Smooth card transitions */
+* {
+  transition-property: background-color, border-color, color;
+  transition-duration: 0.35s;
+  transition-timing-function: ease;
+}
+
+/* Override transition for interactive elements so hover is snappy */
+button, a, [role="button"] {
+  transition-property: background-color, border-color, color, transform, opacity, box-shadow;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
 }

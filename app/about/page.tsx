@@ -30,7 +30,7 @@ export default function AboutPage() {
       <section className="relative px-5 sm:px-10 pt-24 pb-16 sm:pb-24">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* LEFT */}
-          <div>
+          <div className="min-w-0">
             <p
               className="text-xs sm:text-sm font-semibold uppercase tracking-[0.35em] mb-5"
               style={{ color: "var(--accent)" }}
@@ -40,7 +40,7 @@ export default function AboutPage() {
 
             <h1
               className="font-black leading-none mb-8"
-              style={{ fontFamily: "var(--font-syne)", fontSize: "clamp(3rem, 6vw, 7rem)" }}
+              style={{ fontFamily: "var(--font-syne)", fontSize: "clamp(2.5rem, 4.5vw, 5.5rem)" }}
             >
               BUILT
               <br />

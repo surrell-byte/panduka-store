@@ -85,7 +85,7 @@ export default function Footer() {
 
             <h2
               className="font-black leading-none mb-8"
-              style={{ color: "var(--footer-text)", fontFamily: "var(--font-syne)", fontSize: "clamp(2.5rem, 4vw, 5rem)" }}
+              style={{ color: "var(--footer-text)", fontFamily: "var(--font-syne)", fontSize: "clamp(1.8rem, 8vw, 5rem)" }}
             >
               PANDUKA
             </h2>

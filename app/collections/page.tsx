@@ -44,7 +44,7 @@ export default function CollectionsPage() {
 
           <h1
             className="font-black leading-none mb-8"
-            style={{ fontFamily: "var(--font-syne)", fontSize: "clamp(2.5rem, 8vw, 8rem)" }}
+            style={{ fontFamily: "var(--font-syne)", fontSize: "clamp(1.5rem, 8vw, 8rem)" }}
           >
             COLLECTIONS
           </h1>

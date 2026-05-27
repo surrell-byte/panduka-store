@@ -39,7 +39,7 @@ export default function RootLayout({
       className={`${syne.variable} ${outfit.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col" suppressHydrationWarning>
+      <body className="min-h-full flex flex-col overflow-x-hidden" suppressHydrationWarning>
         {/* NO FLASH THEME SCRIPT — beforeInteractive hoists to <head> before paint */}
         <Script
           id="theme-init"

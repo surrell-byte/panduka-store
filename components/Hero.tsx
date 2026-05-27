@@ -55,7 +55,7 @@ export default function Hero() {
             <h1
               className="font-black leading-[0.88] tracking-[-0.04em] mb-8"
               style={{
-                fontSize: "clamp(3.5rem, 8vw, 9rem)",
+                fontSize: "clamp(1.8rem, 11vw, 9rem)",
                 color: "var(--text)",
                 fontFamily: "var(--font-syne)",
               }}

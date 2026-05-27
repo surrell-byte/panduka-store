@@ -43,7 +43,7 @@ export default function ShopPage() {
 
         <h1
           className="font-black leading-none mb-6"
-          style={{ fontFamily: "var(--font-syne)", fontSize: "clamp(2.5rem, 7vw, 7rem)" }}
+          style={{ fontFamily: "var(--font-syne)", fontSize: "clamp(1.5rem, 9vw, 7rem)" }}
         >
           PREMIUM
           <br />

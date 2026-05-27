@@ -56,7 +56,7 @@ export default function FeaturedProducts() {
               style={{
                 color: "var(--text)",
                 fontFamily: "var(--font-syne)",
-                fontSize: "clamp(2.5rem, 6vw, 7rem)",
+                fontSize: "clamp(1.5rem, 9vw, 7rem)",
               }}
             >
               FEATURED

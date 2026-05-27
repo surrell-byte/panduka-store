@@ -40,7 +40,7 @@ export default function AboutPage() {
 
             <h1
               className="font-black leading-none mb-8"
-              style={{ fontFamily: "var(--font-syne)", fontSize: "clamp(2.5rem, 4.5vw, 5.5rem)" }}
+              style={{ fontFamily: "var(--font-syne)", fontSize: "clamp(1.8rem, 10vw, 5.5rem)" }}
             >
               BUILT
               <br />
@@ -193,7 +193,7 @@ export default function AboutPage() {
 
             <h2
               className="font-black leading-tight max-w-5xl"
-              style={{ fontSize: "clamp(2rem, 6vw, 6rem)" }}
+              style={{ fontSize: "clamp(1.8rem, 9vw, 6rem)" }}
             >
               CREATED FOR
               <br />

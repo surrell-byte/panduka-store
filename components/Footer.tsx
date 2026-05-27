@@ -75,7 +75,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 mb-24">
 
           {/* BRAND */}
-          <div className="max-w-2xl">
+          <div className="max-w-2xl min-w-0">
             <p
               className="text-xs sm:text-sm font-semibold uppercase tracking-[0.35em] mb-6"
               style={{ color: "var(--accent)" }}
@@ -85,7 +85,7 @@ export default function Footer() {
 
             <h2
               className="font-black leading-none mb-8"
-              style={{ color: "var(--footer-text)", fontFamily: "var(--font-syne)", fontSize: "clamp(3rem, 6vw, 7rem)" }}
+              style={{ color: "var(--footer-text)", fontFamily: "var(--font-syne)", fontSize: "clamp(2.5rem, 4vw, 5rem)" }}
             >
               PANDUKA
             </h2>

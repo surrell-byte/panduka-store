@@ -37,10 +37,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [pathname]);
-
   return (
     <>
       {/* NAVBAR */}
@@ -57,7 +53,7 @@ export default function Navbar() {
       >
         {/* TOP GRADIENT LINE */}
         <div
-          className="absolute top-0 left-0 w-full h-[1px]"
+          className="absolute top-0 left-0 h-px w-full"
           style={{
             background:
               "linear-gradient(to right, transparent, var(--accent), transparent)",
@@ -88,7 +84,7 @@ export default function Navbar() {
             </span>
 
             <span
-              className="absolute -bottom-1 left-0 h-[2px] w-0 transition-all duration-500 group-hover:w-full"
+              className="absolute -bottom-1 left-0 h-0.5 w-0 transition-all duration-500 group-hover:w-full"
               style={{
                 backgroundColor: "var(--accent)",
               }}
@@ -115,7 +111,7 @@ export default function Navbar() {
 
                   {/* ACTIVE LINE */}
                   <span
-                    className="absolute left-0 -bottom-2 h-[2px] transition-all duration-300"
+                    className="absolute -bottom-2 left-0 h-0.5 transition-all duration-300"
                     style={{
                       width: isActive ? "100%" : "0%",
                       backgroundColor: "var(--accent)",
@@ -124,7 +120,7 @@ export default function Navbar() {
 
                   {/* HOVER LINE */}
                   <span
-                    className="absolute left-0 -bottom-2 h-[2px] w-0 group-hover:w-full transition-all duration-300"
+                    className="absolute -bottom-2 left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full"
                     style={{
                       backgroundColor: "var(--accent)",
                     }}
@@ -243,7 +239,7 @@ export default function Navbar() {
       >
         {/* BACKGROUND GLOW */}
         <div
-          className="absolute top-[-100px] right-[-100px] w-[300px] h-[300px] rounded-full blur-3xl opacity-20"
+          className="absolute -top-25 -right-25 h-75 w-75 rounded-full blur-3xl opacity-20"
           style={{
             background: "var(--accent)",
           }}
@@ -259,6 +255,7 @@ export default function Navbar() {
                 <Link
                   key={link.label}
                   href={link.href}
+                  onClick={() => setMenuOpen(false)}
                   className="group flex items-center justify-between border-b pb-5 transition-all duration-300"
                   style={{
                     borderColor: "rgba(255,255,255,0.08)",

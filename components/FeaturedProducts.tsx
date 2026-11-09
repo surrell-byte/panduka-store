@@ -1,29 +1,9 @@
 import ProductCard from "./ProductCard";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { products } from "@/lib/products";
 
 export default function FeaturedProducts() {
-  const products = [
-    {
-      name: "Tribal Oversized Tee",
-      price: "$45",
-      image:
-        "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1200&auto=format&fit=crop",
-    },
-    {
-      name: "Earthtone Hoodie",
-      price: "$75",
-      image:
-        "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1200&auto=format&fit=crop",
-    },
-    {
-      name: "PANDUKA Jacket",
-      price: "$120",
-      image:
-        "https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1200&auto=format&fit=crop",
-    },
-  ];
-
   return (
     <section
       className="relative overflow-hidden px-5 sm:px-10 py-24 sm:py-32"
@@ -34,7 +14,7 @@ export default function FeaturedProducts() {
     >
       {/* BACKGROUND GLOW */}
       <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full blur-3xl opacity-10 pointer-events-none"
+        className="pointer-events-none absolute top-0 left-1/2 h-175 w-175 -translate-x-1/2 rounded-full opacity-10 blur-3xl"
         style={{
           background: "var(--accent)",
         }}
@@ -84,14 +64,14 @@ export default function FeaturedProducts() {
 
         {/* PRODUCT GRID */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
-          {products.map((product, index) => (
+          {products.slice(0, 3).map((product) => (
             <div
-              key={index}
+              key={product.id}
               className="group transition-all duration-500 hover:-translate-y-2"
             >
               <ProductCard
                 name={product.name}
-                price={product.price}
+                price={`$${product.price}`}
                 image={product.image}
               />
             </div>

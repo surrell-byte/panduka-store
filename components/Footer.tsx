@@ -56,7 +56,7 @@ export default function Footer() {
     >
       {/* BACKGROUND GLOW */}
       <div
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full blur-3xl opacity-10 pointer-events-none"
+        className="pointer-events-none absolute bottom-0 left-1/2 h-175 w-175 -translate-x-1/2 rounded-full opacity-10 blur-3xl"
         style={{ background: "var(--accent)" }}
       />
 
@@ -85,7 +85,7 @@ export default function Footer() {
 
             <h2
               className="font-black leading-none mb-8"
-              style={{ color: "var(--footer-text)", fontFamily: "var(--font-syne)", fontSize: "clamp(1.8rem, 8vw, 5rem)" }}
+              style={{ color: "var(--footer-text)", fontFamily: "var(--font-syne)", fontSize: "clamp(2rem, 4.3vw, 4.25rem)" }}
             >
               PANDUKA
             </h2>

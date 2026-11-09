@@ -1,77 +1,15 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Image from "next/image";
+import { products, type ProductCategory } from "@/lib/products";
 
-type Product = {
-  id: number;
-  name: string;
-  category: "Hoodies" | "T-Shirts" | "Pants";
-  price: number;
-  image: string;
-  tag: string;
-};
-
-const products: Product[] = [
-  {
-    id: 1,
-    name: "Shadow Hoodie",
-    category: "Hoodies",
-    price: 89,
-    tag: "Best Seller",
-    image:
-      "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1200&auto=format&fit=crop",
-  },
-  {
-    id: 2,
-    name: "Minimal Tee",
-    category: "T-Shirts",
-    price: 45,
-    tag: "New Drop",
-    image:
-      "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1200&auto=format&fit=crop",
-  },
-  {
-    id: 3,
-    name: "Street Cargo",
-    category: "Pants",
-    price: 120,
-    tag: "Limited",
-    image:
-      "https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1200&auto=format&fit=crop",
-  },
-  {
-    id: 4,
-    name: "Monarch Zip",
-    category: "Hoodies",
-    price: 98,
-    tag: "Popular",
-    image:
-      "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=1200&auto=format&fit=crop",
-  },
-  {
-    id: 5,
-    name: "Signal Tee",
-    category: "T-Shirts",
-    price: 52,
-    tag: "Fresh",
-    image:
-      "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=1200&auto=format&fit=crop",
-  },
-  {
-    id: 6,
-    name: "Urban Utility",
-    category: "Pants",
-    price: 110,
-    tag: "Featured",
-    image:
-      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1200&auto=format&fit=crop",
-  },
-];
-
-const filters = ["All", "Hoodies", "T-Shirts", "Pants"] as const;
+const filters = ["All", "Hoodies", "T-Shirts"] as const;
 
 export default function ShopPage() {
-  const [selectedFilter, setSelectedFilter] = useState<(typeof filters)[number]>("All");
+  const [selectedFilter, setSelectedFilter] = useState<
+    "All" | ProductCategory
+  >("All");
   const [cartCount, setCartCount] = useState(0);
 
   const visibleProducts = useMemo(() => {
@@ -99,10 +37,12 @@ export default function ShopPage() {
             </p>
 
             <h1
-              className="font-black leading-none mb-6"
+              className="mb-6 w-full max-w-full font-black leading-[0.85]"
               style={{
                 fontFamily: "var(--font-syne)",
                 fontSize: "clamp(1.5rem, 9vw, 7rem)",
+                letterSpacing: "-0.07em",
+                overflowWrap: "anywhere",
               }}
             >
               PREMIUM
@@ -187,18 +127,20 @@ export default function ShopPage() {
         {visibleProducts.map((product) => (
           <article
             key={product.id}
-            className="group overflow-hidden rounded-[2rem] transition-all duration-500 hover:-translate-y-2"
+            className="group overflow-hidden rounded-4xl transition-all duration-500 hover:-translate-y-2"
             style={{
               backgroundColor: "rgba(255,255,255,0.04)",
               border: "1px solid rgba(255,255,255,0.06)",
               backdropFilter: "blur(12px)",
             }}
           >
-            <div className="relative overflow-hidden">
-              <img
+            <div className="relative h-70 overflow-hidden sm:h-90 lg:h-105">
+              <Image
                 src={product.image}
                 alt={product.name}
-                className="h-[280px] sm:h-[360px] lg:h-[420px] w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                fill
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
               />
 
               <div className="absolute inset-x-0 top-0 flex items-center justify-between p-4">
@@ -240,7 +182,10 @@ export default function ShopPage() {
                   <h2 className="text-xl sm:text-2xl font-bold">{product.name}</h2>
                 </div>
 
-                <span className="text-lg font-semibold" style={{ color: "var(--accent)" }}>
+                <span
+                  className="text-lg font-semibold"
+                  style={{ color: "var(--accent)" }}
+                >
                   ${product.price}
                 </span>
               </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Heart, ShoppingBag, ArrowUpRight } from "lucide-react";
 
 type ProductCardProps = {
@@ -16,7 +17,7 @@ export default function ProductCard({
 }: ProductCardProps) {
   return (
     <div
-      className="group relative rounded-[2rem] overflow-hidden transition-all duration-500 hover:-translate-y-3"
+      className="group relative overflow-hidden rounded-4xl transition-all duration-500 hover:-translate-y-3"
       style={{
         backgroundColor: "var(--card)",
         border: "1px solid rgba(255,255,255,0.08)",
@@ -24,16 +25,18 @@ export default function ProductCard({
       }}
     >
       {/* IMAGE CONTAINER */}
-      <div className="relative h-[280px] sm:h-[360px] lg:h-[420px] overflow-hidden">
+      <div className="relative h-70 overflow-hidden sm:h-90 lg:h-105">
         {/* IMAGE */}
-        <img
+        <Image
           src={image}
           alt={name}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          fill
+          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+          className="object-cover transition-transform duration-700 group-hover:scale-110"
         />
 
         {/* OVERLAY */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-80" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/10 to-transparent opacity-80" />
 
         {/* TOP BADGES */}
         <div className="absolute top-5 left-5 right-5 flex items-center justify-between">
@@ -170,7 +173,7 @@ export default function ProductCard({
 
       {/* HOVER BORDER GLOW */}
       <div
-        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-[2rem]"
+        className="pointer-events-none absolute inset-0 rounded-4xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
         style={{
           border: "1px solid rgba(255,255,255,0.14)",
           boxShadow: "0 0 60px rgba(255,255,255,0.04)",

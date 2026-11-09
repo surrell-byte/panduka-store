@@ -1,12 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Play } from "lucide-react";
 
 export default function Hero() {
   return (
     <section
-      className="relative min-h-[100svh] overflow-hidden flex items-center px-5 sm:px-10 lg:px-16 pt-24"
+      className="relative overflow-hidden px-5 pb-16 pt-28 sm:px-10 sm:pb-20 sm:pt-32 lg:flex lg:min-h-svh lg:items-center lg:px-16 lg:py-28"
       style={{
         background:
           "radial-gradient(circle at top left, rgba(255,255,255,0.05), transparent 30%), var(--bg)",
@@ -14,7 +15,7 @@ export default function Hero() {
     >
       {/* BACKGROUND GLOW */}
       <div
-        className="absolute top-[-200px] right-[-120px] w-[550px] h-[550px] rounded-full blur-3xl opacity-20 pointer-events-none"
+        className="pointer-events-none absolute -top-50 -right-30 h-137.5 w-137.5 rounded-full opacity-20 blur-3xl"
         style={{
           background: "var(--accent)",
         }}
@@ -31,13 +32,13 @@ export default function Hero() {
       />
 
       <div className="relative z-10 max-w-7xl mx-auto w-full">
-        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-20 items-center">
+        <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
           {/* LEFT CONTENT */}
-          <div>
+          <div className="min-w-0 text-left">
             {/* LABEL */}
             <div className="flex items-center gap-4 mb-8">
               <div
-                className="w-12 h-[1px]"
+                className="h-px w-12"
                 style={{
                   backgroundColor: "var(--accent)",
                 }}
@@ -53,9 +54,9 @@ export default function Hero() {
 
             {/* HEADLINE */}
             <h1
-              className="font-black leading-[0.88] tracking-[-0.04em] mb-8"
+              className="mb-8 w-full max-w-full text-left font-black leading-[0.82] tracking-[-0.07em]"
               style={{
-                fontSize: "clamp(1.8rem, 11vw, 9rem)",
+                fontSize: "clamp(2rem, 5vw, 5rem)",
                 color: "var(--text)",
                 fontFamily: "var(--font-syne)",
               }}
@@ -69,7 +70,7 @@ export default function Hero() {
 
             {/* DESCRIPTION */}
             <p
-              className="text-lg sm:text-xl max-w-xl mb-12 leading-relaxed"
+              className="mb-10 max-w-152 text-left text-base leading-relaxed sm:mb-12 sm:text-lg lg:text-xl"
               style={{
                 color: "var(--text-muted)",
               }}
@@ -80,11 +81,11 @@ export default function Hero() {
             </p>
 
             {/* BUTTONS */}
-            <div className="flex flex-wrap items-center gap-5">
+            <div className="flex flex-wrap items-center justify-start gap-3 sm:gap-5">
               {/* PRIMARY CTA */}
               <Link
                 href="/shop"
-                className="group inline-flex items-center gap-3 px-8 sm:px-10 py-4 rounded-full font-semibold text-sm sm:text-base transition-all duration-300 hover:scale-105 active:scale-95"
+                className="group inline-flex items-center gap-3 rounded-full px-6 py-3.5 text-sm font-semibold transition-all duration-300 hover:scale-[1.02] active:scale-95 sm:px-8 sm:py-4 sm:text-base"
                 style={{
                   backgroundColor: "var(--accent)",
                   color: "#000",
@@ -101,7 +102,7 @@ export default function Hero() {
               {/* SECONDARY CTA */}
               <Link
                 href="/collections"
-                className="group inline-flex items-center gap-3 px-8 sm:px-10 py-4 rounded-full border font-semibold text-sm sm:text-base transition-all duration-300 hover:scale-105 active:scale-95"
+                className="group inline-flex items-center gap-3 rounded-full border px-6 py-3.5 text-sm font-semibold transition-all duration-300 hover:scale-[1.02] active:scale-95 sm:px-8 sm:py-4 sm:text-base"
                 style={{
                   borderColor: "rgba(255,255,255,0.14)",
                   color: "var(--text)",
@@ -116,15 +117,15 @@ export default function Hero() {
             </div>
 
             {/* STATS */}
-            <div className="flex flex-wrap gap-8 sm:gap-12 mt-12 sm:mt-20">
+            <div className="mt-10 flex flex-wrap gap-x-8 gap-y-6 sm:mt-14 sm:gap-x-12">
               {[
                 { value: "2026", label: "Founded" },
                 { value: "12+", label: "Collections" },
                 { value: "Global", label: "Vision" },
               ].map((item) => (
-                <div key={item.label}>
+                <div key={item.label} className="min-w-20">
                   <h3
-                    className="text-3xl sm:text-4xl font-black mb-2"
+                    className="mb-1 text-2xl font-black sm:text-3xl"
                     style={{
                       color: "var(--text)",
                       fontFamily: "var(--font-syne)",
@@ -134,7 +135,7 @@ export default function Hero() {
                   </h3>
 
                   <p
-                    className="text-sm uppercase tracking-[0.2em]"
+                    className="text-[10px] uppercase tracking-[0.18em] sm:text-xs sm:tracking-[0.2em]"
                     style={{
                       color: "var(--text-muted)",
                     }}
@@ -147,28 +148,31 @@ export default function Hero() {
           </div>
 
           {/* RIGHT VISUAL */}
-          <div className="relative hidden lg:block">
+          <div className="relative mx-auto w-full max-w-136 lg:mx-0 lg:max-w-none">
             {/* MAIN CARD */}
             <div
-              className="relative aspect-[0.8] rounded-[2.5rem] overflow-hidden border"
+              className="relative aspect-[0.92] overflow-hidden rounded-4xl border sm:aspect-[1.15] sm:rounded-[2.5rem] lg:aspect-[0.82]"
               style={{
                 borderColor: "rgba(255,255,255,0.08)",
                 backgroundColor: "rgba(255,255,255,0.03)",
                 backdropFilter: "blur(16px)",
               }}
             >
-              <img
-                src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1400&auto=format&fit=crop"
+              <Image
+                src="/africa-black.png"
                 alt="PANDUKA Fashion"
-                className="w-full h-full object-cover"
+                fill
+                priority
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                className="object-contain"
               />
 
               {/* IMAGE OVERLAY */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/10 to-transparent" />
 
               {/* FLOATING INFO CARD */}
               <div
-                className="absolute bottom-6 left-6 right-6 rounded-3xl p-6"
+                className="absolute bottom-3 left-3 right-3 rounded-2xl p-4 sm:bottom-6 sm:left-6 sm:right-6 sm:rounded-3xl sm:p-6"
                 style={{
                   backgroundColor: "rgba(0,0,0,0.45)",
                   backdropFilter: "blur(20px)",

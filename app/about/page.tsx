@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function AboutPage() {
   const values = [
     {
@@ -28,19 +30,22 @@ export default function AboutPage() {
     >
       {/* HERO */}
       <section className="relative px-5 sm:px-10 pt-24 pb-16 sm:pb-24">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div className="mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:gap-12">
           {/* LEFT */}
-          <div className="min-w-0">
+          <div className="min-w-0 text-left">
             <p
-              className="text-xs sm:text-sm font-semibold uppercase tracking-[0.35em] mb-5"
+              className="mb-5 text-xs font-semibold uppercase tracking-[0.35em] sm:text-sm"
               style={{ color: "var(--accent)" }}
             >
               Our Story
             </p>
 
             <h1
-              className="font-black leading-none mb-8"
-              style={{ fontFamily: "var(--font-syne)", fontSize: "clamp(1.8rem, 10vw, 5.5rem)" }}
+              className="mb-8 max-w-170 font-black leading-[0.8] tracking-[-0.07em]"
+              style={{
+                fontFamily: "var(--font-syne)",
+                fontSize: "clamp(2rem, 5vw, 5.25rem)",
+              }}
             >
               BUILT
               <br />
@@ -50,7 +55,7 @@ export default function AboutPage() {
             </h1>
 
             <p
-              className="max-w-2xl text-lg sm:text-xl leading-relaxed mb-10"
+              className="mb-10 max-w-140 text-lg leading-relaxed sm:text-xl"
               style={{ color: "var(--text-muted)" }}
             >
               PANDUKA is premium Afro-inspired streetwear blending heritage,
@@ -58,16 +63,16 @@ export default function AboutPage() {
               designed for a new global generation.
             </p>
 
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap items-center justify-start gap-4">
               <button
-                className="px-8 py-4 rounded-2xl font-semibold transition-all duration-300 hover:scale-105"
+                className="rounded-2xl px-8 py-4 font-semibold transition-all duration-300 hover:scale-[1.02]"
                 style={{ backgroundColor: "var(--accent)", color: "#000" }}
               >
                 Explore Collections
               </button>
 
               <button
-                className="px-8 py-4 rounded-2xl border transition-all duration-300 hover:bg-white/5"
+                className="rounded-2xl border px-8 py-4 font-semibold transition-all duration-300 hover:bg-white/5"
                 style={{ border: "1px solid rgba(255,255,255,0.1)" }}
               >
                 Our Vision
@@ -76,21 +81,25 @@ export default function AboutPage() {
           </div>
 
           {/* RIGHT IMAGE */}
-          <div className="relative">
+          <div className="relative mx-auto w-full max-w-155 lg:mx-0">
             <div
-              className="absolute -top-10 -right-10 w-64 h-64 rounded-full blur-3xl opacity-20 pointer-events-none"
+              className="absolute -top-10 -right-8 h-56 w-56 rounded-full blur-3xl opacity-20 pointer-events-none"
               style={{ background: "var(--accent)" }}
             />
 
             <div
-              className="overflow-hidden rounded-[2rem] sm:rounded-[2.5rem]"
-              style={{ border: "1px solid rgba(255,255,255,0.08)" }}
+              className="overflow-hidden rounded-4xl border bg-[#e7e2d9] shadow-[0_20px_50px_rgba(0,0,0,0.12)] sm:rounded-[2.5rem]"
+              style={{ borderColor: "rgba(255,255,255,0.08)" }}
             >
-              <img
-                src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=1600&auto=format&fit=crop"
-                alt="PANDUKA"
-                className="w-full h-[420px] sm:h-[560px] lg:h-[700px] object-cover hover:scale-105 transition-transform duration-700"
-              />
+              <div className="relative h-105 bg-[#e6e2d9] sm:h-130 lg:h-160">
+                <Image
+                  src="/vavengi.png"
+                  alt="PANDUKA"
+                  fill
+                  sizes="(min-width: 1024px) 45vw, 100vw"
+                  className="object-contain transition-transform duration-700 hover:scale-[1.02]"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -99,7 +108,7 @@ export default function AboutPage() {
       {/* BRAND STATEMENT */}
       <section className="px-5 sm:px-10 pb-16 sm:pb-24">
         <div
-          className="max-w-7xl mx-auto rounded-[2rem] sm:rounded-[2.5rem] p-8 sm:p-12 lg:p-16"
+          className="max-w-7xl mx-auto rounded-4xl sm:rounded-[2.5rem] p-8 sm:p-12 lg:p-16"
           style={{
             background: "rgba(255,255,255,0.04)",
             border: "1px solid rgba(255,255,255,0.08)",
@@ -148,7 +157,7 @@ export default function AboutPage() {
             {values.map((value, index) => (
               <div
                 key={index}
-                className="rounded-[2rem] p-6 sm:p-8 transition-all duration-500 hover:-translate-y-2"
+                className="rounded-4xl p-6 sm:p-8 transition-all duration-500 hover:-translate-y-2"
                 style={{
                   backgroundColor: "rgba(255,255,255,0.04)",
                   border: "1px solid rgba(255,255,255,0.08)",
@@ -173,11 +182,13 @@ export default function AboutPage() {
       </section>
 
       {/* FULL WIDTH IMAGE */}
-      <section className="relative h-[400px] sm:h-[550px] lg:h-[700px] overflow-hidden">
-        <img
-          src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1800&auto=format&fit=crop"
+      <section className="relative h-100 overflow-hidden sm:h-137.5 lg:h-175">
+        <Image
+          src="/dont-save-her.png"
           alt="Fashion Campaign"
-          className="w-full h-full object-cover"
+          fill
+          sizes="100vw"
+          className="object-cover"
         />
 
         <div className="absolute inset-0 bg-black/50" />
@@ -192,7 +203,7 @@ export default function AboutPage() {
             </p>
 
             <h2
-              className="font-black leading-tight max-w-5xl"
+              className="max-w-5xl font-black leading-tight text-white"
               style={{ fontSize: "clamp(1.8rem, 9vw, 6rem)" }}
             >
               CREATED FOR

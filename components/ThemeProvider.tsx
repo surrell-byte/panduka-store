@@ -4,7 +4,7 @@ import {
   createContext,
   useContext,
   useEffect,
-  useState,
+  useSyncExternalStore,
 } from "react";
 
 export type Theme =
@@ -71,26 +71,50 @@ const ThemeContext = createContext<ThemeCtx>({
   setTheme: () => {},
 });
 
+const themeStorageKey = "panduka-theme";
+let currentTheme: Theme = "savanna";
+
+function isTheme(value: string | null): value is Theme {
+  return THEMES.some((theme) => theme.id === value);
+}
+
+function getThemeSnapshot(): Theme {
+  try {
+    const storedTheme = localStorage.getItem(themeStorageKey);
+    if (isTheme(storedTheme)) {
+      currentTheme = storedTheme;
+    }
+  } catch {
+    return currentTheme;
+  }
+
+  return currentTheme;
+}
+
+function getServerThemeSnapshot(): Theme {
+  return "savanna";
+}
+
+function subscribeToThemeChanges(onChange: () => void) {
+  window.addEventListener("storage", onChange);
+  window.addEventListener("panduka-theme-change", onChange);
+
+  return () => {
+    window.removeEventListener("storage", onChange);
+    window.removeEventListener("panduka-theme-change", onChange);
+  };
+}
+
 export function ThemeProvider({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [theme, setThemeState] =
-    useState<Theme>("savanna");
-
-  /* LOAD SAVED THEME */
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem(
-        "panduka-theme"
-      ) as Theme | null;
-
-      if (stored) {
-        setThemeState(stored);
-      }
-    } catch {}
-  }, []);
+  const theme = useSyncExternalStore(
+    subscribeToThemeChanges,
+    getThemeSnapshot,
+    getServerThemeSnapshot,
+  );
 
   /* APPLY THEME TO DOM */
   useEffect(() => {
@@ -219,13 +243,16 @@ export function ThemeProvider({
       }
     );
 
-    try {
-      localStorage.setItem("panduka-theme", theme);
-    } catch {}
   }, [theme]);
 
   const setTheme = (t: Theme) => {
-    setThemeState(t);
+    currentTheme = t;
+    try {
+      localStorage.setItem(themeStorageKey, t);
+    } catch (error) {
+      console.error("Unable to save the selected theme.", error);
+    }
+    window.dispatchEvent(new Event("panduka-theme-change"));
   };
 
   return (
